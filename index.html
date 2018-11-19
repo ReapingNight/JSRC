@@ -6,7 +6,7 @@
     <body>
         <header>
             <div id="logoLeft">
-                <img src="Logo.png" alt="Left logo" /><!--PLACEHOLDER IMG-->
+                <img src="Images/Logo.png" alt="Left logo" /><!--PLACEHOLDER IMG-->
             </div>
 
             <div id="gameName">
@@ -15,7 +15,7 @@
             </div>
 
             <div id="logoRight">
-                <img src="Logo.png" alt="Right logo" /><!--PLACEHOLDER IMG-->
+                <img src="Images/Logo.png" alt="Right logo" /><!--PLACEHOLDER IMG-->
             </div>
         </header>
 
@@ -29,11 +29,31 @@
             </div>
 
             <div id="info">
-                <div id="info_options">
+                <div id="info_options" style="display:none">
                     <!--Section in html corresponding to the options form-->
                     <form>
-                        Simultanious: <input type="radio" name="simultanTrue">Yes</input>
-                        <input type="radio" name="simultanFalse" checked>No</input>
+                        Simultanious: 
+                            <input type="radio" name="simultanTrue">Yes</input>
+                            <input type="radio" name="simultanFalse" checked>No</input><br />
+                            <div id="simultanious" style="display:none">
+                                <select>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                        Timer:
+                            <select>
+                                <option value="none">None</option>
+                                <option value="15+10">15+10</option>
+                                <option value="15+20">15+20</option>
+                                <option value="25+10">25+10</option>
+                                <option value="25+20">25+20</option>
+                            </select><br />
+                        Blind: 
+                            <input type="radio" name="blindTrue">Yes</input>
+                            <input type="radio" name="blindFalse" checked>No</input>
                     </form>
                 </div>
 
