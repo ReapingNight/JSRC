@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/ReapingNight/JSRC/issues"
   },
-  "homepage": "https://github.com/ReapingNight/JSRC#readme"
+  "homepage": "https://github.com/ReapingNight/JSRC#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
 }
