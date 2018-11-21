@@ -1,0 +1,19 @@
+{
+  "name": "jsrc",
+  "version": "1.0.0",
+  "description": "Just Some Regular Chess",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ReapingNight/JSRC.git"
+  },
+  "author": "jbotha and jmchan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ReapingNight/JSRC/issues"
+  },
+  "homepage": "https://github.com/ReapingNight/JSRC#readme"
+}
