@@ -1,8 +1,9 @@
-var yourTurn = true;
+var yourTurn = false;
 var firstSelect;
 var secondSelect;
 var numSelected = 0;
 
+//This function selects the clicked div and checks if enough has been selected to send to server
 function select(id)
 {
     if(yourTurn)
@@ -20,10 +21,10 @@ function select(id)
             default:
                 break;
         }
-    }
 
-    if(numSelected % 2 == 0)
-    {
-        window.alert("Sending " + firstSelect + ":" + secondSelect);
+        if(numSelected % 2 == 0)
+        {
+            window.alert("Sending " + firstSelect + ":" + secondSelect);
+        }
     }
 }
