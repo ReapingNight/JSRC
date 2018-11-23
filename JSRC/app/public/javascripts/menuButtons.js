@@ -1,10 +1,11 @@
 var optionsID;
 var infoID;
-var check;
+
+//Initializes upon loading the page
 window.onload = function()
 {
-optionsID = document.getElementById("info_options");
-infoID = document.getElementById("info_howToPlay");
+    optionsID = document.getElementById("info_options");
+    infoID = document.getElementById("info_howToPlay");
 }
 
 //Toggles the how to play button and turns off options
@@ -17,8 +18,7 @@ function pressHowToPlay()
     }
     else
     {
-        infoID.style.display = 'none';
-        
+        infoID.style.display = 'none';    
     }
 }
 
@@ -33,6 +33,5 @@ function pressOptions()
     else
     {
         optionsID.style.display = 'none';
-        
     }
 }
