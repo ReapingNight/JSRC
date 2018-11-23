@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>JSRC Main</title>
+        <script src = "javascripts/menuButtons.js"></script>
     </head>
     <body>
         <header>
@@ -26,8 +27,8 @@
             <div id="menu">
                 <ul id="mainMenu">
                     <li><input type="button" onclick="location.href='game.html'" value="PLAY" /></li>
-                    <li><button>OPTIONS</button></li>
-                    <li><button>HOW TO PLAY</button></li>
+                    <li><button onclick="pressOptions()">OPTIONS</button></li>
+                    <li><button onclick="pressHowToPlay()">HOW TO PLAY</button></li>
                 </ul>
             </div>
 
@@ -36,8 +37,8 @@
                     <!--Section in html corresponding to the options form-->
                     <form>
                         Simultanious: 
-                            <input type="radio" name="simultanTrue">Yes</input>
-                            <input type="radio" name="simultanFalse" checked>No</input><br />
+                            <input type="radio" name="simultan">Yes</input>
+                            <input type="radio" name="simultan" checked>No</input><br />
                             <div id="simultanious" style="display:none">
                                 <select>
                                     <option value="2">2</option>
@@ -55,8 +56,8 @@
                                 <option value="25+20">25+20</option>
                             </select><br />
                         Blind: 
-                            <input type="radio" name="blindTrue">Yes</input>
-                            <input type="radio" name="blindFalse" checked>No</input>
+                            <input type="radio" name="blind">Yes</input>
+                            <input type="radio" name="blind" checked>No</input>
                     </form>
                 </div>
 
