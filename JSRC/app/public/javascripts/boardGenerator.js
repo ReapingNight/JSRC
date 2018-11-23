@@ -14,7 +14,7 @@ function generateBlack()
         }       
     }
 
-    gamePlaceholder.innerHTML = temp.join(" ");
+    gamePlaceholder.innerHTML = temp.join("");
 }
 //This function generates the white board into the document
 function generateWhite()
@@ -30,7 +30,7 @@ function generateWhite()
         }
     }
 
-    gamePlaceholder.innerHTML = temp.join(" ");
+    gamePlaceholder.innerHTML = temp.join("");
 }
 
 //This function checks what board to generate
