@@ -2,9 +2,8 @@
 <html>
     <head>
         <title>JSRC Game</title>
+        <script src="javascripts/boardGenerator.js" type="text/javascript"></script>
     </head>
-    <script src="javascripts/boardGenerator.js" type="text/javascript"></script>
-
     <body>
         <header>
             <div id="turnIndicator">
@@ -13,23 +12,28 @@
         </header>
         <main>
             <div id="graveyard">
-                <div id ="lostPieces">Lost Pieces</div>
-                <div id ="capturePieces">Captured Pieces</div>
+                <div id="lostPieces">Lost Pieces</div>
+                <div id="capturePieces">Captured Pieces</div>
             </div>
 
-            <div id ="chessBorder"></div>
+            <button onclick="generateBoard(0)">Generate Black</button>
+            <button onclick="generateBoard(1)">Generate White</button>
 
-            <div id ="opponementClock">
+            <div id="chessBorder">
+                <!--The chess board will be generated here-->
+            </div>
+
+            <div id="opponementClock">
                 <p>00:00.00</p>
             </div>
-            <div id ="playerClock">
+            <div id="playerClock">
                     <p>00:00.00</p>
             </div>
         </main>
         <footer>
-            <div id = "boardSelector">
+            <div id="boardSelector">
                 <!--Delete this div below-->
-                <div id = ""><button><img src = "images/Logo.png" alt = "Logo" /></button></div>
+                <div id=""><button><img src="images/Logo.png" alt="Logo" /></button></div>
             </div>
         </footer>
     </body>
