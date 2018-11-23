@@ -5,12 +5,11 @@ window.onload = function()
 {
 optionsID = document.getElementById("info_options");
 infoID = document.getElementById("info_howToPlay");
-check = document.getElementById("simulNo");
 }
 
+//Toggles the how to play button and turns off options
 function pressHowToPlay()
 {
-   
     if (infoID.style.display == 'none')
     {
         infoID.style.display = 'block';
@@ -21,12 +20,9 @@ function pressHowToPlay()
         infoID.style.display = 'none';
         
     }
-
-
-
-
 }
 
+//Toggles the options button and turns off howToPlay
 function pressOptions()
 {
     if (optionsID.style.display == 'none')
@@ -39,12 +35,4 @@ function pressOptions()
         optionsID.style.display = 'none';
         
     }
-
-
-}
-function checkYesSimultan()
-{
-    //window.alert("gsgfdgsfdsgf");
-    //check.checked = false;
-
 }
