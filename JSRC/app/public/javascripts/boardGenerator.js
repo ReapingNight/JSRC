@@ -9,12 +9,12 @@ function generateBlack()
     {
         for(let jj = 72; jj >= 65; jj--)
         {
-            temp[index] = "<div class='boardTile' id='" + String.fromCharCode(jj) + ii + "'>" + String.fromCharCode(jj) + ii + "</div>";
+            temp[index] = "<div class='boardTile' onclick='select(this.id)' id='" + String.fromCharCode(jj) + ii + "'>" + String.fromCharCode(jj) + ii + "</div>";
             index++;
         }       
     }
 
-    gamePlaceholder.innerHTML = temp.join(" ");
+    gamePlaceholder.innerHTML = temp.join("");
 }
 //This function generates the white board into the document
 function generateWhite()
@@ -25,12 +25,12 @@ function generateWhite()
     {
         for(let jj = 65; jj <= 72; jj++)
         {
-            temp[index] = "<div class='boardTile' id='" + String.fromCharCode(jj) + ii + "'>" + String.fromCharCode(jj) + ii + "</div>";
+            temp[index] = "<div class='boardTile' onclick='select(this.id)' id='" + String.fromCharCode(jj) + ii + "'>" + String.fromCharCode(jj) + ii + "</div>";
             index++;
         }
     }
 
-    gamePlaceholder.innerHTML = temp.join(" ");
+    gamePlaceholder.innerHTML = temp.join("");
 }
 
 //This function checks what board to generate
