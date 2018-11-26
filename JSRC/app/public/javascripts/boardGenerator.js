@@ -49,5 +49,5 @@ function generateBoard(boardColour) //0-Black, 1-White
 //Main function that executes on pageload
 window.onload = function()
 {
-    gamePlaceholder = document.getElementById("chessBorder");
+    gamePlaceholder = document.getElementById("board");
 }
