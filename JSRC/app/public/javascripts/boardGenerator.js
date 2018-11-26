@@ -1,4 +1,5 @@
-var gamePlaceholder;
+var boardPlaceholder;
+var chessBorder;
 
 //This function generates the black board into the document
 function generateBlack()
@@ -13,8 +14,9 @@ function generateBlack()
             index++;
         }       
     }
+    chessBorder.style.backgroundImage = "url('images/boardBlack.png')";
 
-    gamePlaceholder.innerHTML = temp.join("");
+    boardPlaceholder.innerHTML = temp.join("");
 }
 //This function generates the white board into the document
 function generateWhite()
@@ -29,8 +31,9 @@ function generateWhite()
             index++;
         }
     }
+    chessBorder.style.backgroundImage = "url(images/boardWhite.png)";
 
-    gamePlaceholder.innerHTML = temp.join("");
+    boardPlaceholder.innerHTML = temp.join("");
 }
 
 //This function checks what board to generate
@@ -49,5 +52,6 @@ function generateBoard(boardColour) //0-Black, 1-White
 //Main function that executes on pageload
 window.onload = function()
 {
-    gamePlaceholder = document.getElementById("board");
+    chessBorder = document.getElementById("chessBorder");
+    boardPlaceholder = document.getElementById("board");
 }

@@ -1,0 +1,36 @@
+header
+{
+    width: 25vw;
+    margin: auto;
+}
+
+.logo
+{
+    width: 7.5vw;
+    height: 7.5vw;
+    background-image: url(../images/Logo.png);
+    background-size: 5vw;
+    background-repeat: no-repeat;
+    background-position: center;
+    float: left;
+}
+
+#gameName
+{
+    padding-top: 1.5vw;
+    margin: auto;
+    text-align: center;
+    width: 10vw;
+    height: 7.5vw;
+    float: left;
+}
+
+#mainName h1
+{
+    line-height: 1vw;
+}
+
+main
+{
+    clear: both;
+}
