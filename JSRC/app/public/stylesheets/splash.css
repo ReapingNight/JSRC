@@ -49,6 +49,7 @@ main
 
 #menu ul li
 {
+    margin: 0.01vw 0;
     padding-left: 1vw;
     text-indent: -2vw;
 }
