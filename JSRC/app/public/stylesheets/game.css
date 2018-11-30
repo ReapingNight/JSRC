@@ -12,8 +12,21 @@ header div
 
 main
 {
+    padding-top: 1vw;
     float: left;
     width: 100%;
+}
+
+button
+{
+    position: fixed;
+    top: 5vw;
+    left: 20vw;
+}
+
+button:nth-of-type(2n+1)
+{
+    left: 27.5vw;
 }
 
 #graveyard
@@ -21,10 +34,10 @@ main
     font-size: 1vw;
     float: left;
     width: 20vw;
-    border-color: #000;
+    /*border-color: #000;
     border-style: solid;
-    border-width: 2px;
-    height: 100%;
+    border-width: 2px;*/
+    height: 40vw;
 }
 
 #graveyard div
@@ -79,6 +92,7 @@ main
 
 #clock div
 {
+    font-size: 1vw;
     border-color: #555;
     border-style: solid;
 }
