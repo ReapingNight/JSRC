@@ -10,9 +10,11 @@ var app = express();
 app.use(express.static(__dirname + "/public"));
 var server = http.createServer(app);
 
-app.get("/splash", indexRouter);
+app.get("/", indexRouter);
 
-const wss = new websocket.Server({ server });
+
+const wss = new websocket.Server({server, path:"game.html"});
+
 wss.on("connection", function(wss) {
 
     
