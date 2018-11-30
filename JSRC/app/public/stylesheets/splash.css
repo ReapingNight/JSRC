@@ -75,10 +75,15 @@ main
     font-size: 1.2vw;
 }
 
-#info_howToPlay p span *
+#info_howToPlay p span
 {
     font-size: 0.8vw;
     line-height: 0.8vw;
+}
+
+#info_howToPlay p span ul
+{
+    font-size: 0.8vw;
 }
 
 #chesspiece
