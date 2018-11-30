@@ -1,7 +1,6 @@
-<<<<<<< HEAD
-=======
+
+
 var url = require("url");
->>>>>>> f41c0361be2d03c47803514d4e93d59cfcefd554
 var express = require("express");
 var http = require("http");
 var websocket = require("ws");
