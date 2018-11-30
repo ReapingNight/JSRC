@@ -20,6 +20,23 @@ function pressHowToPlay()
     {
         infoID.style.display = 'none';    
     }
+//TEST CODE!
+//---------------------------------------------------------------------------
+//Create websocket to establish connection with server
+    var socket = new WebSocket("ws://localhost:3005");
+
+            socket.onmessage = function(event){
+                //What to do when receiving a message from the server
+                pressHowToPlay();
+                socket.close();
+            }
+
+            socket.onopen = function(){
+                //Send the server a message when establishing conection
+                socket.send("Client Message");
+               
+            }
+//Test end-----------------------------------------------------------------  
 }
 
 //Toggles the options button and turns off howToPlay
