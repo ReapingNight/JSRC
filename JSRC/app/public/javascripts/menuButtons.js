@@ -23,7 +23,7 @@ function pressHowToPlay()
 //TEST CODE!
 //---------------------------------------------------------------------------
 //Create websocket to establish connection with server
-    var socket = new WebSocket("ws://localhost:3005");
+    var socket = new WebSocket("ws://145.94.153.155:3000");
 
             socket.onmessage = function(event){
                 //What to do when receiving a message from the server
