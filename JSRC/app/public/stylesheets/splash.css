@@ -70,17 +70,17 @@ main
     border-width: 5px;
     width: 40vw;
     height: 30vw;
-    text-align: justify;
     padding: 1vw;
 }
 
 #info_howToPlay p b
 {
-    font-size: 1.2vw;
+    font-size: 1vw;
 }
 
-#info_howToPlay p span
+#info_howToPlay *:not(b)
 {
+    text-align: justify;
     font-size: 0.8vw;
     line-height: 0.8vw;
 }
