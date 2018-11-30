@@ -33,6 +33,7 @@
                     <li><button onclick="location.href='game'" id="playButton">PLAY</button></li>
                     <li><button onclick="pressOptions()">OPTIONS</button></li>
                     <li><button onclick="pressHowToPlay()">HOW TO PLAY</button></li>
+                    <li><button onclick="michael()">MICHAEL&#39;S BUTTON</button></li>
                 </ul>
             </div>
 
@@ -68,18 +69,27 @@
                 <div id="info_howToPlay" style="display:none">
                     <!--Section in html corresponding to the how to play text field-->
                     <p>
-                        The following section contains a short summary of the chess rules.<br /><br />
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                         Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                         Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
-                         Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
-                         In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
-                         Nullam dictum felis eu pede mollis pretium. Integer tincidunt.
-                         Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.
-                         Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
-                         Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.
-                         Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet.
-                         Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.
+                        <b>HOW TO PLAY</b>
+                        <br /><br />
+                        <span>
+                            The player controlling the white pieces is called &#34;White&#34;, the player 
+                            controlling the black pieces is called &#34;Black&#34;. 
+                            White moves first, the players alternate turns. Making a move is required. 
+                            The game continues until one king is checkmated, a player resigns or a draw is 
+                            declared. In addition, if the game is being played under time control, 
+                            players who exceed the time limit lose automatically.<br />
+                            A piece is captured when attacking enemy replaces said piece on its square. 
+                            This piece is then permanently removed from the game. The king can be put in 
+                            check, but it cannot be captured.<br />
+                            <ul>
+                                <li>The king can move one square horizonatlly, vertically and diagonally.</li>
+                                <li>The queen can move any number of empty squares in horizontal, vertical and diagonal direction</li>
+                                <li>A rook can move any number of empty squares in horizontal or vertical direction.</li>
+                                <li>A bishop can move any number of empty squares in diagonal direction.</li>
+                                <li>A knight can move to the closest square not on the same rank, file or diagonal</li>
+                                <li></li>
+                            </ul>
+                        </span>
                     </p>
                 </div>
             </div>

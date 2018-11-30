@@ -23,6 +23,7 @@ header
     width: 10vw;
     height: 7.5vw;
     float: left;
+    font-size: 1vw;
 }
 
 #mainName h1
@@ -71,6 +72,13 @@ main
     height: 30vw;
     text-align: justify;
     padding: 1vw;
+    font-size: 1.2vw;
+}
+
+#info_howToPlay p span *
+{
+    font-size: 0.8vw;
+    line-height: 0.8vw;
 }
 
 #chesspiece
