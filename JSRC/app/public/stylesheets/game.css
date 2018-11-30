@@ -10,17 +10,31 @@ header div
     border-width: 5px;
 }
 
+main
+{
+    float: left;
+    width: 100%;
+}
+
 #graveyard
 {
-    position:  fixed;
-    top: 0;
-    left: 0;
+    font-size: 1vw;
     float: left;
     width: 20vw;
     border-color: #000;
     border-style: solid;
     border-width: 2px;
-    height: 100vh;
+    height: 100%;
+}
+
+#graveyard div
+{
+    float: left;
+    border-color: #555;
+    border-style: solid;
+    border-width: 2px;
+    height: 50%;
+    width: 100%;
 }
 
 #chessBorder
@@ -54,6 +68,17 @@ header div
 
 #clock
 {
+    position: fixed;
+    top: 25vh;
+    right: 5vw;
     width: 15vw;
     float: right;
+    border-color: #000;
+    border-style: solid;
+}
+
+#clock div
+{
+    border-color: #555;
+    border-style: solid;
 }
