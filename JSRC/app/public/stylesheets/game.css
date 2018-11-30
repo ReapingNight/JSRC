@@ -96,3 +96,9 @@ button:nth-of-type(2n+1)
     border-color: #555;
     border-style: solid;
 }
+
+footer
+{
+    clear: both;
+    padding-top: 0.1vw;
+}
