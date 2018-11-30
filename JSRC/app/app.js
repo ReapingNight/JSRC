@@ -10,16 +10,18 @@ var app = express();
 app.use(express.static(__dirname + "/public"));
 var server = http.createServer(app);
 
-app.get("/", indexRouter);
+
+app.get("/game", indexRouter);
+app.get("*", indexRouter);
 
 
-const wss = new websocket.Server({server, path:"game.html"});
+const wss = new websocket.Server({server});
 
 wss.on("connection", function(wss) {
 
     
        
-        wss.send("ServerMessage");
+        wss.send("Hallo Christiaan!   ~PCMichael");
         wss.close();
         
 });

@@ -20,22 +20,25 @@ function pressHowToPlay()
     {
         infoID.style.display = 'none';    
     }
+
+}
+function michael()
+{
 //TEST CODE!
 //---------------------------------------------------------------------------
 //Create websocket to establish connection with server
-    var socket = new WebSocket("ws://145.94.153.155:3000");
+var socket = new WebSocket("ws://145.94.153.155:3000");
 
-            socket.onmessage = function(event){
-                //What to do when receiving a message from the server
-                window.alert("Received a message from the server")
-                socket.close();
-            }
+socket.onmessage = function(event){
+//What to do when receiving a message from the server
+window.alert(event.data)
+socket.close();
+}
 
-            socket.onopen = function(){
-                //Send the server a message when establishing conection
-                socket.send("Client Message");
-               
-            }
+socket.onopen = function(){
+//Send the server a message when establishing conection
+socket.send("Client Message");   
+}
 //Test end-----------------------------------------------------------------  
 }
 
