@@ -27,7 +27,7 @@ function pressHowToPlay()
 
             socket.onmessage = function(event){
                 //What to do when receiving a message from the server
-                pressHowToPlay();
+                window.alert("Received a message from the server")
                 socket.close();
             }
 
