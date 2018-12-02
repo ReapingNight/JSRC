@@ -42,10 +42,10 @@
                     <!--Section in html corresponding to the options form-->
                     <form>
                         Simultanious: 
-                            <input type="radio" name="simultan">Yes</input>
-                            <input type="radio" name="simultan" checked>No</input><br />
-                            <div id="simultanious" style="display:none">
-                                <select>
+                            <input type="radio" name="simultan" value="true" onclick="checkSimultan()">Yes</input>
+                            <input type="radio" name="simultan" value="false" onclick="uncheckSimultan()" checked>No</input><br />
+                            <div id="simultanious">
+                                <select id="simulOption" style="display:none">
                                     <option value="2">2</option>
                                     <option value="3">3</option>
                                     <option value="4">4</option>
@@ -53,16 +53,17 @@
                                 </select>
                             </div>
                         Timer:
-                            <select>
+                            <select id="timerOption">
                                 <option value="none">None</option>
                                 <option value="15+10">15+10</option>
                                 <option value="15+20">15+20</option>
                                 <option value="25+10">25+10</option>
                                 <option value="25+20">25+20</option>
                             </select><br />
+
                         Blind: 
-                            <input type="radio" name="blind">Yes</input>
-                            <input type="radio" name="blind" checked>No</input>
+                            <input type="radio" name="blind" value="true">Yes</input>
+                            <input type="radio" name="blind" value="false" checked>No</input>
                     </form>
                 </div>
 

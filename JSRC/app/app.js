@@ -6,7 +6,7 @@ var http = require("http");
 var websocket = require("ws");
 var port = process.argv[2];
 var app = express();
-var playerId = 0;
+var playerCount = 0;
 app.use(express.static(__dirname + "/public"));
 var server = http.createServer(app);
 
