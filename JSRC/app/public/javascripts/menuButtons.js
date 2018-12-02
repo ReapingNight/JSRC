@@ -1,6 +1,6 @@
+//Global variables
 var optionsID;
 var infoID;
-
 //Initializes upon loading the page
 window.onload = function()
 {
@@ -22,25 +22,6 @@ function pressHowToPlay()
     }
 
 }
-function michael()
-{
-//TEST CODE!
-//---------------------------------------------------------------------------
-//Create websocket to establish connection with server
-var socket = new WebSocket("ws://145.94.153.155:3000");
-
-socket.onmessage = function(event){
-//What to do when receiving a message from the server
-window.alert(event.data)
-socket.close();
-}
-
-socket.onopen = function(){
-//Send the server a message when establishing conection
-socket.send("Client Message");   
-}
-//Test end-----------------------------------------------------------------  
-}
 
 //Toggles the options button and turns off howToPlay
 function pressOptions()
@@ -55,3 +36,41 @@ function pressOptions()
         optionsID.style.display = 'none';
     }
 }
+
+
+
+//Test Code!---------------------------------------------------------------------------
+function michael()
+{
+    //Create Options object
+    
+
+    //Create websocket to establish connection with server
+    var socket = new WebSocket("ws://192.168.0.35:3000");
+
+    //What to do when receiving a message from the server
+    socket.onmessage = function(event){
+        if (event.data == "Connected")
+        {
+            socket.send("MyOptions")
+            window.alert(event.data)
+        }
+        if (event.data == "Start")
+        {
+            pressHowToPlay();
+            window.alert(event.data)
+        }
+        if (event.data == "MyOptions")
+        {
+            window.alert(event.data)
+        }
+    }
+
+    //Send the server a message when establishing conection
+    socket.onopen = function()
+    {
+        //No content yet
+    }
+//Test end-----------------------------------------------------------------------------
+}
+
