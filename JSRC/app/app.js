@@ -24,21 +24,21 @@ wss.on("connection", function(ws) {
         ws.send("Connected");
         console.log("connected");
         //What to do when receiving a message from a connected player
-        // ws.on("message", function(data) {
-        //         //Make player object with selected options and identifier
-        //         var player = {id:ws, options:data}
-        //         players.push(player)
-        //         playerCount = playerCount + 1
-        //         ws.send(data);
-        //         console.log("received message");
-        //         if ((playerCount % 2) == 0)
-        //         {
-        //                 startGame(players[(playerCount-1)].id, players[(playerCount-2)].id);
-        //         }    
-        // });
-        ws.on("message", function(data){
-                console.log(data.toString());
+        ws.on("message", function(data) {
+                //Make player object with selected options and identifier
+                var player = {id:ws, options:data}
+                players.push(player)
+                playerCount = playerCount + 1
+                ws.send(data);
+                console.log("received message");
+                if ((playerCount % 2) == 0)
+                {
+                        startGame(players[(playerCount-1)].id, players[(playerCount-2)].id);
+                }    
         });
+        // ws.on("message", function(data){
+        //         console.log(data.toString());
+        // });
 });
 
 function startGame(playerOne, playerTwo)
