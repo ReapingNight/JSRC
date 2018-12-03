@@ -3,6 +3,7 @@ var firstSelect;
 var secondSelect;
 var numSelected = 0;
 var socket;
+var Setup = require('./config');
 
 //This function selects the clicked div and checks if enough has been selected to send to server
 function select(id)
@@ -26,13 +27,14 @@ function select(id)
         if(numSelected % 2 == 0)
         {
             //window.alert("Sending " + firstSelect + ":" + secondSelect);
-            socket.send(firstSelect + secondSelect);
+            socket.send("MOVE " + firstSelect + "," + secondSelect);
         }
     }
 }
 
 (function setup(){
-    socket = new WebSocket("ws://145.94.222.143:3000");
+    //socket = new WebSocket(Setup.WEB_SOCKET_URL);
+    socket = new WebSocket("ws://localhost:3000");
 
     socket.onmessage = function(event)
     {
