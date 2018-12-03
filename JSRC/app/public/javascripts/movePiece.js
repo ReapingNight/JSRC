@@ -1,7 +1,8 @@
-var yourTurn = false;
+var yourTurn = true;
 var firstSelect;
 var secondSelect;
 var numSelected = 0;
+var socket;
 
 //This function selects the clicked div and checks if enough has been selected to send to server
 function select(id)
@@ -24,7 +25,18 @@ function select(id)
 
         if(numSelected % 2 == 0)
         {
-            window.alert("Sending " + firstSelect + ":" + secondSelect);
+            //window.alert("Sending " + firstSelect + ":" + secondSelect);
+            socket.send(firstSelect + secondSelect);
         }
+    }
+}
+
+window.onload = function()
+{
+    socket = new WebSocket("ws://145.94.222.143:3000");
+
+    socket.onmessage = function(event)
+    {
+        window.alert(event.data);
     }
 }
