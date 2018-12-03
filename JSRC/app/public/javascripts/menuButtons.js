@@ -79,7 +79,7 @@ function michael()
     }
     if(timerActive == false)
     {
-        timer = false
+        timer = 1
     }
     window.alert(simultan);
     window.alert(timer);
