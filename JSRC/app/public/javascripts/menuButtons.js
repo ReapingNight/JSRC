@@ -66,7 +66,7 @@ function michael()
     window.alert(timer);
 
     //Create websocket to establish connection with server
-    var socket = new WebSocket("ws://192.168.0.35:3000");
+    var socket = new WebSocket("ws://145.94.222.143:3000");
 
     //What to do when receiving a message from the server
     socket.onmessage = function(event){
