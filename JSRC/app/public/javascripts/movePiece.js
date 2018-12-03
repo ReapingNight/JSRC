@@ -32,7 +32,7 @@ function select(id)
 }
 
 (function setup(){
-    socket = new WebSocket(Setup.WEB_SOCKET_URL);
+    socket = new WebSocket("ws://145.94.222.143:3000");
 
     socket.onmessage = function(event)
     {
