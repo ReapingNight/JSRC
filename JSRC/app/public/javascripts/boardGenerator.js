@@ -4,6 +4,9 @@ var chessBorder;
 //This function generates the black board into the document
 function generateBlack()
 {
+    chessBorder = document.getElementById("chessBorder");
+    boardPlaceholder = document.getElementById("board");
+
     let temp = new Array(64);
     let index = 0;
     for(let ii = 1; ii <= 8; ii++)
@@ -21,6 +24,9 @@ function generateBlack()
 //This function generates the white board into the document
 function generateWhite()
 {
+    chessBorder = document.getElementById("chessBorder");
+    boardPlaceholder = document.getElementById("board");
+
     let temp = new Array(64);
     let index = 0;
     for(let ii = 8; ii >= 1; ii--)
@@ -39,7 +45,7 @@ function generateWhite()
 //This function checks what board to generate
 function generateBoard(boardColour) //0-Black, 1-White
 {
-    if(boardColour == 0)
+    if(boardColour === 0)
     {
         generateBlack();
     }
@@ -47,11 +53,4 @@ function generateBoard(boardColour) //0-Black, 1-White
     {
         generateWhite();
     }
-}
-
-//Main function that executes on pageload
-window.onload = function()
-{
-    chessBorder = document.getElementById("chessBorder");
-    boardPlaceholder = document.getElementById("board");
 }

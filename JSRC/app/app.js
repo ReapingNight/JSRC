@@ -36,9 +36,9 @@ wss.on("connection", function(ws) {
         //                 startGame(players[(playerCount-1)].id, players[(playerCount-2)].id);
         //         }    
         // });
-        // ws.on("message", function(data){
-        //         console.log(data.toString());
-        // });
+        ws.on("message", function(data){
+                console.log(data.toString());
+        });
 });
 
 function startGame(playerOne, playerTwo)
