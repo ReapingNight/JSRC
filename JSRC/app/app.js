@@ -9,7 +9,6 @@ var app = express();
 var playerCount = 0;
 app.use(express.static(__dirname + "/public"));
 var server = http.createServer(app);
-var mover = require("./chess-mover");
 
 
 app.get("/game", indexRouter);
