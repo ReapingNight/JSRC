@@ -31,12 +31,11 @@ function select(id)
     }
 }
 
-window.onload = function()
-{
-    socket = new WebSocket("ws://145.94.222.143:3000");
+(function setup(){
+    socket = new WebSocket(Setup.WEB_SOCKET_URL);
 
     socket.onmessage = function(event)
     {
         window.alert(event.data);
     }
-}
+})();
