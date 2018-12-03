@@ -2,6 +2,8 @@
 var optionsID;
 var infoID;
 var simulList;
+var simulActive;
+var timerActive;
 //Initializes upon loading the page
 window.onload = function()
 {
@@ -10,6 +12,7 @@ window.onload = function()
     simulList = document.getElementById("simulOption");
     timerList = document.getElementById("timerOption");
     simulActive = false;
+    timerActive = false;
 }
 
 //Toggles the how to play button and turns off options
@@ -52,17 +55,33 @@ function uncheckSimultan()
     simulList.style.display = 'none';
     simulActive = false;
 }
+//Shows the simultanious list and sets simulActive to true
+function checkTimer()
+{
+    timerList.style.display = 'block';
+    timerActive = true;
+}
+//Hides the simultanious list and sets simulActive to false
+function uncheckTimer()
+{
+    timerList.style.display = 'none';
+    timerActive = false;
+}
 //Test Code!---------------------------------------------------------------------------
 function michael()
 {
     //Still in progress, now shows some options data in windowalert.
-    Simultan = simulList.value;
+    simultan = simulList.value;
     timer = timerList.value;
     if(simulActive == false)
     {
-        Simultan = 1
+        simultan = 1
     }
-    window.alert(Simultan);
+    if(timerActive == false)
+    {
+        timer = false
+    }
+    window.alert(simultan);
     window.alert(timer);
 
     //Create websocket to establish connection with server

@@ -97,3 +97,25 @@ main
     width: 5vw;
     height: 5vw;
 }
+
+#simulRadio
+{
+    float: left;
+}
+
+#simulList
+{
+    float: left;
+    padding-left: 1vw;
+}
+
+#timerRadio
+{
+    float: left;
+}
+
+#timerList
+{
+    float: left;
+    padding-left: 1vw;
+}

@@ -41,10 +41,14 @@
                 <div id="info_options" style="display:none">
                     <!--Section in html corresponding to the options form-->
                     <form>
-                        Simultanious: 
-                            <input type="radio" name="simultan" value="true" onclick="checkSimultan()">Yes</input>
-                            <input type="radio" name="simultan" value="false" onclick="uncheckSimultan()" checked>No</input><br />
-                            <div id="simultanious">
+                        
+                        <div>
+                            <div id = "simulRadio">
+                                Simultanious:
+                                <input type="radio" name="simultan" value="true" onclick="checkSimultan()">Yes</input>
+                                <input type="radio" name="simultan" value="false" onclick="uncheckSimultan()" checked>No</input>
+                            </div>
+                            <div id = "simulList">
                                 <select id="simulOption" style="display:none">
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -52,15 +56,24 @@
                                     <option value="5">5</option>
                                 </select>
                             </div>
-                        Timer:
-                            <select id="timerOption">
-                                <option value="none">None</option>
-                                <option value="15+10">15+10</option>
-                                <option value="15+20">15+20</option>
-                                <option value="25+10">25+10</option>
-                                <option value="25+20">25+20</option>
-                            </select><br />
-
+                        </div>
+                        <br />
+                        <div>
+                            <div id = "timerRadio">
+                                Timer:
+                                <input type="radio" name="timer" value="true" onclick="checkTimer()">Yes</input>
+                                <input type="radio" name="timer" value="false" onclick="uncheckTimer()" checked>No</input>
+                            </div>
+                            <div id = "timerList">
+                                <select id="timerOption" style = "display:none">
+                                    <option value="15+10">15+10</option>
+                                    <option value="15+20">15+20</option>
+                                    <option value="25+10">25+10</option>
+                                    <option value="25+20">25+20</option>
+                                </select>
+                            </div>
+                        </div>
+                        <br />
                         Blind: 
                             <input type="radio" name="blind" value="true">Yes</input>
                             <input type="radio" name="blind" value="false" checked>No</input>
