@@ -28,7 +28,7 @@ wss.on("connection", function(ws) {
                 //Make player object with selected options and identifier
                 var player = {id:ws, options:data}
                 players.push(player)
-                playerCount = playerCount + 1
+                playerCount++;
                 ws.send(data);
                 console.log("received message");
                 if ((playerCount % 2) == 0)
