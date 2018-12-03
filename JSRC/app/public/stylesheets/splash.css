@@ -73,6 +73,12 @@ main
     padding: 1vw;
 }
 
+#info_howToPlay
+{
+    max-height: 30vw;
+    max-width: 40vw;
+}
+
 #info_howToPlay p b
 {
     font-size: 1vw;
