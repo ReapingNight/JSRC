@@ -32,7 +32,6 @@ function select(id)
 }
 
 (function setup(){
-    //socket = new WebSocket(Setup.WEB_SOCKET_URL);
     socket = new WebSocket(WEB_SOCKET_URL);
 
     socket.onmessage = function(event)
