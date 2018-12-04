@@ -12,11 +12,13 @@ function select(id)
         switch(numSelected % 2)
         {
             case 0:
-                firstSelect = document.getElementById(id).id;
+                firstSelect = document.getElementById(id);
+                highlightTile(0, firstSelect, "green");
                 numSelected++;
                 break;
             case 1:
-                secondSelect = document.getElementById(id).id;
+                secondSelect = document.getElementById(id);
+                highlightTile(0, secondSelect, "green");
                 numSelected++;
                 break;
             default:
@@ -25,12 +27,49 @@ function select(id)
 
         if(numSelected % 2 == 0)
         {
-            //window.alert("Sending " + firstSelect + ":" + secondSelect);
-            socket.send("MOVE " + firstSelect + "," + secondSelect);
+            //Function to move selected piece
+            socket.send("MOVE " + firstSelect.id + "," + secondSelect.id);
+            highlightTile(2, firstSelect, secondSelect);
         }
     }
 }
 
+/** Function that highlights a tile
+ * args: type, requires extra arguments
+ * type:    0 - tile, color
+ *          1 - tile
+ *          2 - tile, tile
+ */
+function highlightTile(type)
+{
+    switch(type)
+    {
+        case 0:
+            //Select first tile
+            arguments[1].style.border = "0.25vw groove " + arguments[2];
+            break;
+        case 1:
+            //Deselect tile
+            arguments[1].style.border = "none";
+            break;
+        case 2:
+            //Deselect all tiles
+            arguments[1].style.border = "none";
+            arguments[2].style.border = "none";
+            break;
+        default:
+            break;
+    }
+
+}
+
+//Function that moves a piece form one tile to another
+function mover()
+{
+
+}
+
+//Executes as soon as script is loaded
 (function setup(){
     socket = new WebSocket(WEB_SOCKET_URL);
 
