@@ -3,7 +3,6 @@ var firstSelect;
 var secondSelect;
 var numSelected = 0;
 var socket;
-var Setup = require('./config');
 
 //This function selects the clicked div and checks if enough has been selected to send to server
 function select(id)
@@ -34,7 +33,7 @@ function select(id)
 
 (function setup(){
     //socket = new WebSocket(Setup.WEB_SOCKET_URL);
-    socket = new WebSocket("ws://localhost:3000");
+    socket = new WebSocket(WEB_SOCKET_URL);
 
     socket.onmessage = function(event)
     {
