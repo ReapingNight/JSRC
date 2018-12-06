@@ -97,8 +97,8 @@ function michael()
     window.alert(timer);
     window.alert(blind);
 
-    //Create websocket to establish connection with server
-    var socket = new WebSocket(WEB_SOCKET_URL);
+    // //Create websocket to establish connection with server
+    // var socket = new WebSocket(WEB_SOCKET_URL);
 
     //What to do when receiving a message from the server
     socket.onmessage = function(event){

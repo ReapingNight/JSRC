@@ -2,7 +2,6 @@ var yourTurn = true;
 var firstSelect;
 var secondSelect;
 var numSelected = 0;
-var socket;
 
 //This function selects the clicked div and checks if enough has been selected to send to server
 function select(id)
@@ -71,8 +70,6 @@ function mover()
 
 //Executes as soon as script is loaded
 (function setup(){
-    socket = new WebSocket(WEB_SOCKET_URL);
-
     socket.onmessage = function(event)
     {
         window.alert(event.data);
