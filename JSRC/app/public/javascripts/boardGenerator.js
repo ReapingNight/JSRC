@@ -63,7 +63,7 @@ function placePieces()
         $.each(pieces, function(index, piece)
         {
             //window.alert(piece.position);
-            $('#' + piece.position).html(piece.color + ":" + piece.type);
+            $('#' + piece.position).css('background-image', 'url(images/'+ piece.color + piece.type + '.png)');
         });
     });
 }
