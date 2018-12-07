@@ -9,15 +9,6 @@ function generateBlack()
 
     let temp = new Array(64);
     let index = 0;
-    // for(let ii = 1; ii <= 8; ii++)
-    // {
-    //     for(let jj = 72; jj >= 65; jj--)
-    //     {
-    //         temp[index] = "<div class='boardTile' onclick='select(this.id)' id='"
-    //         + String.fromCharCode(jj) + ii + "'>" + "</div>";
-    //         index++;
-    //     }       
-    // }
     for(let ii = 0; ii <= 63; ii++)
     {
         temp[index++] = "<div class='boardTile' onclick='select(this.id)' id='"
@@ -36,15 +27,6 @@ function generateWhite()
 
     let temp = new Array(64);
     let index = 0;
-    // for(let ii = 8; ii >= 1; ii--)
-    // {
-    //     for(let jj = 65; jj <= 72; jj++)
-    //     {
-    //         temp[index] = "<div class='boardTile' onclick='select(this.id)' id='"
-    //         + String.fromCharCode(jj) + ii + "'>" + "</div>";
-    //         index++;
-    //     }
-    // }
     for(let ii = 63; ii >= 0; ii--)
     {
         temp[index++] = "<div class='boardTile' onclick='select(this.id)' id='"

@@ -63,9 +63,11 @@ function highlightTile(type)
 }
 
 //Function that moves a piece form one tile to another
-function mover()
+function mover(obj)
 {
-    
+    let piece = JSON.parse(obj);
+    $('#' + piece.posOld).css('background-image', 'none');
+    $('#' + piece.position).css('background-image', 'url(images/' + piece.color + piece.type + '.png)');
 }
 
 (function onload(){
@@ -74,7 +76,7 @@ function mover()
         let words = message.data.split(" ");
         if(words[0] === "MAKE_MOVE")
         {
-            mover();
+            mover(words[1]);
         }
     }
 })()
