@@ -65,13 +65,16 @@ function highlightTile(type)
 //Function that moves a piece form one tile to another
 function mover()
 {
-
+    
 }
 
-//Executes as soon as script is loaded
-(function setup(){
-    socket.onmessage = function(event)
+(function onload(){
+    socket.onmessage = function(message)
     {
-        window.alert(event.data);
+        let words = message.data.split(" ");
+        if(words[0] === "MAKE_MOVE")
+        {
+            mover();
+        }
     }
-})();
+})()
