@@ -93,9 +93,14 @@ function michael()
     {
         timer = 1
     }
-    window.alert(simultan);
-    window.alert(timer);
-    window.alert(blind);
+
+    var Settings =
+    {
+        Simultanious : simultan, Timer : timer, Blind : blind
+    };
+    socket.send("OPTIONS " + JSON.stringify(Settings));
+    
+    
 
     // //Create websocket to establish connection with server
     // var socket = new WebSocket(WEB_SOCKET_URL);
