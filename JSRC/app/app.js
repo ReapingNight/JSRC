@@ -6,6 +6,8 @@ var http = require("http");
 var websocket = require("ws");
 var port = process.argv[2];
 var app = express();
+var settings;
+
 app.use(express.static(__dirname + "/public"));
 var server = http.createServer(app);
 
@@ -85,6 +87,20 @@ wss.on("connection", function(ws) {
                                         ws.send("INVALID_MOVE");
                                 }
                                 break;
+                        case "OPTIONS":
+                                settings = JSON.parse(words[1]);
+                                var player = {id:ws, options:settings};
+                                players.push(player);
+                                console.log(players.length);
+                                for(var i=0; i<players.length ; i++)
+                                {
+                                        if((settingEquals(players[i].options, player.options) == true) && ((players[i].id == player.id) == false))
+                                        {
+                                                console.log("Found!");
+                                                startGame(players[i].id, player.id);
+                                        }
+                                }
+                               break; 
                         default:
                                 console.log("Command not found");
                                 break;
@@ -96,6 +112,15 @@ function startGame(playerOne, playerTwo)
 {     
         playerOne.send("Start");
         playerTwo.send("Start");
+}
+
+function settingEquals(settingsOne, settingsTwo)
+{
+        if((settingsOne.Simultanious == settingsTwo.Simultanious) && (settingsOne.Timer == settingsTwo.Timer) && (settingsOne.Blind == settingsTwo.Blind)) 
+        {
+        return true;
+        }
+        else return false;
 }
    
 
