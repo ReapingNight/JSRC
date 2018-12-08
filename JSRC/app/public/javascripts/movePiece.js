@@ -67,7 +67,7 @@ function mover(obj)
 {
     let piece = JSON.parse(obj);
     $('#' + piece.posOld).css('background-image', 'none');
-    $('#' + piece.position).css('background-image', 'url(images/' + piece.color + piece.type + '.png)');
+    $('#' + piece.position).css('background-image', 'url(images/pieces/' + piece.color + piece.type + '.png)');
 }
 
 (function onload(){
