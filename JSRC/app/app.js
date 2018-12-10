@@ -29,6 +29,7 @@ app.get("*", indexRouter);
 
 const wss = new websocket.Server({server});
 var players = [];
+var games = [];
 
 //What to do on connection
 wss.on("connection", function(ws) {
@@ -41,16 +42,17 @@ wss.on("connection", function(ws) {
                 switch(words[0])
                 {
                         case "MOVE":
-                                let positions = words[1].split(",");
-                                let temp = board.move(positions[0], positions[1]);
-                                if(temp !== null)
-                                {
-                                        ws.send("MAKE_MOVE " + JSON.stringify(temp));
-                                }
-                                else
-                                {
-                                        ws.send("INVALID_MOVE");
-                                }
+                                // let positions = words[1].split(",");
+                                // let temp = board.move(positions[0], positions[1]);
+                                // if(temp !== null)
+                                // {
+                                //         ws.send("MAKE_MOVE " + JSON.stringify(temp));
+                                // }
+                                // else
+                                // {
+                                //         ws.send("INVALID_MOVE");
+                                // }
+                                //let id = game.findIndex(find(game, "players", ws))
                                 break;
                         case "OPTIONS":
                                 settings = JSON.parse(words[1]);
@@ -75,7 +77,8 @@ wss.on("connection", function(ws) {
 
 function startGame(playerOne, playerTwo, options)
 {     
-        let game = require("chess-game").newGame(numGames++, [playerOne.id, playerTwo.id], options, 0);
+        let temp = require("chess-game").newGame(numGames++, [playerOne.id, playerTwo.id], options, 0);
+        games.push(temp);
 
         players.splice(playerOne);
         players.splice(playerTwo);
@@ -92,6 +95,17 @@ function settingEquals(settingsOne, settingsTwo)
         }
         else return false;
 }
-   
+
+//Finds an object in an array based on an attribute of said object
+function find(array, key, value)
+{
+        for(let ii = 0; ii < array.length; ii++)
+        {
+                if(array[ii][key] === value)
+                {
+                        return array[ii];
+                }
+        }
+}
 
 server.listen(port);
