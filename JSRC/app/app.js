@@ -75,11 +75,13 @@ wss.on("connection", function(ws) {
 
 function startGame(playerOne, playerTwo, options)
 {     
-        let game = require("chess-game").newGame(numGames++, playerOne.id, playerTwo.id, options, 0);
+        let game = require("chess-game").newGame(numGames++, [playerOne.id, playerTwo.id], options, 0);
 
         players.splice(playerOne);
         players.splice(playerTwo);
         console.log("Starting game: " + game.id);
+        game.players[0].send("GENERATE 0");
+        game.players[1].send("GENERATE 1");
 }
 
 function settingEquals(settingsOne, settingsTwo)

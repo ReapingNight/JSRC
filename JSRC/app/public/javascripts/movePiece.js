@@ -68,15 +68,11 @@ function mover(obj)
     let piece = JSON.parse(obj);
     $('#' + piece.posOld).css('background-image', 'none');
     $('#' + piece.position).css('background-image', 'url(images/pieces/' + piece.color + piece.type + '.png)');
+
+    yourTurn = !yourTurn;
 }
 
-(function onload(){
-    socket.onmessage = function(message)
-    {
-        let words = message.data.split(" ");
-        if(words[0] === "MAKE_MOVE")
-        {
-            mover(words[1]);
-        }
-    }
-})()
+function setYourTurn(val)
+{
+    yourTurn = val;
+}
