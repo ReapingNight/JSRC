@@ -42,17 +42,19 @@ wss.on("connection", function(ws) {
                 switch(words[0])
                 {
                         case "MOVE":
-                                // let positions = words[1].split(",");
-                                // let temp = board.move(positions[0], positions[1]);
-                                // if(temp !== null)
-                                // {
-                                //         ws.send("MAKE_MOVE " + JSON.stringify(temp));
-                                // }
-                                // else
-                                // {
-                                //         ws.send("INVALID_MOVE");
-                                // }
-                                //let id = game.findIndex(find(game, "players", ws))
+                                let positions = words[1].split(",");
+                                let temp = board.move(positions[0], positions[1]);
+                                let thisGame = findGame(ws);
+
+                                if(temp !== null)
+                                {
+                                        thisGame.players[0].send("MAKE_MOVE " + JSON.stringify(temp));
+                                        thisGame.players[1].send("MAKE_MOVE " + JSON.stringify(temp));
+                                }
+                                else
+                                {
+                                        ws.send("INVALID_MOVE");
+                                }
                                 break;
                         case "OPTIONS":
                                 settings = JSON.parse(words[1]);
@@ -82,9 +84,9 @@ function startGame(playerOne, playerTwo, options)
 
         players.splice(playerOne);
         players.splice(playerTwo);
-        console.log("Starting game: " + game.id);
-        game.players[0].send("GENERATE 0");
-        game.players[1].send("GENERATE 1");
+        console.log("Starting game: " + temp.id);
+        temp.players[0].send("GENERATE 0");
+        temp.players[1].send("GENERATE 1");
 }
 
 function settingEquals(settingsOne, settingsTwo)
@@ -97,13 +99,13 @@ function settingEquals(settingsOne, settingsTwo)
 }
 
 //Finds an object in an array based on an attribute of said object
-function find(array, key, value)
+function findGame(value)
 {
-        for(let ii = 0; ii < array.length; ii++)
+        for(let ii = 0; ii < games.length; ii++)
         {
-                if(array[ii][key] === value)
+                if(games[ii].players[0] === value || games[ii].players[1] === value)
                 {
-                        return array[ii];
+                        return games[ii];
                 }
         }
 }
