@@ -70,9 +70,17 @@ function mover(obj)
     $('#' + piece.position).css('background-image', 'url(images/pieces/' + piece.color + piece.type + '.png)');
 
     yourTurn = !yourTurn;
+    updateTurnSign();
 }
 
 function setYourTurn(val)
 {
     yourTurn = val;
+}
+
+function updateTurnSign()
+{
+    let turnTextDiv = document.getElementById("turnText");
+
+    turnTextDiv.innerText = (yourTurn) ? "Your Turn" : "Opponent\'s Turn";
 }

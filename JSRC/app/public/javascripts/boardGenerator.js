@@ -18,6 +18,7 @@ function generateBlack()
 
     boardPlaceholder.innerHTML = temp.join("");
     placePieces();
+    setYourTurn(false);
 }
 //This function generates the white board into the document
 function generateWhite()
@@ -61,4 +62,5 @@ function generateBoard(boardColour) //0-Black, 1-White
     {
         generateWhite();
     }
+    updateTurnSign();
 }
