@@ -43,8 +43,8 @@ wss.on("connection", function(ws) {
                 {
                         case "MOVE":
                                 let positions = words[1].split(",");
-                                let temp = board.move(positions[0], positions[1]);
                                 let thisGame = findGame(ws);
+                                let temp = thisGame.board.move(positions[0], positions[1]);
 
                                 if(temp !== null)
                                 {
@@ -79,7 +79,9 @@ wss.on("connection", function(ws) {
 
 function startGame(playerOne, playerTwo, options)
 {     
-        let temp = require("chess-game").newGame(numGames++, [playerOne.id, playerTwo.id], options, 0);
+        console.log(JSON.stringify(board));
+        let temp = require("chess-game").newGame(numGames++, [playerOne.id, playerTwo.id], JSON.parse(JSON.stringify(board)), options, 0);
+        temp.board.move = board.move;
         games.push(temp);
 
         players.splice(playerOne);
