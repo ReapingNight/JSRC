@@ -11,9 +11,9 @@ var settings;
 app.use(express.static(__dirname + "/public"));
 var server = http.createServer(app);
 
-var board = require("chess-board");
+var numGames = 0;
 
-var playerCount = 0;
+var board = require("chess-board");
 
 app.get("/game", indexRouter);
 app.get("/", indexRouter);
@@ -62,7 +62,7 @@ wss.on("connection", function(ws) {
                                         if((settingEquals(players[i].options, player.options) == true) && ((players[i].id == player.id) == false))
                                         {
                                                 console.log("Found!");
-                                                startGame(players[i].id, player.id);
+                                                startGame(players[i], player, player.options);
                                         }
                                 }
                                break; 
@@ -73,10 +73,13 @@ wss.on("connection", function(ws) {
         });
 });
 
-function startGame(playerOne, playerTwo)
+function startGame(playerOne, playerTwo, options)
 {     
-        playerOne.send("Start");
-        playerTwo.send("Start");
+        let game = require("chess-game").newGame(numGames++, playerOne.id, playerTwo.id, options, 0);
+
+        players.splice(playerOne);
+        players.splice(playerTwo);
+        console.log("Starting game: " + game.id);
 }
 
 function settingEquals(settingsOne, settingsTwo)
