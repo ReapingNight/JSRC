@@ -5,6 +5,8 @@ var socket = new WebSocket(WEB_SOCKET_URL);
 (function messageHandler(){
     socket.onmessage = function(message)
     {
+        window.alert();
+        
         let words = message.data.split(" ");
         if(words[0] === "MAKE_MOVE")
         {

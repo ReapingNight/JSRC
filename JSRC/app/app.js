@@ -34,7 +34,7 @@ var games = [];
 //What to do on connection
 wss.on("connection", function(ws) {
         
-        ws.send("Connected");
+        ws.send("ALERT Connected");
         console.log("connected");
         ws.on("message", function(data){
                 console.log(data.toString());
