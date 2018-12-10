@@ -1,4 +1,7 @@
 //Send Options
+function CreateMatch()
+{
+window.alert("CREATE!");
 var URLString = ""+window.location;
 var query = URLString.split("?");
 var Params = query[1].split("&");
@@ -12,18 +15,13 @@ var blind = BlindString.split("=")[1];
 
 //Test Code!---------------------------------------------------------------------------
 //Send the server a message when establishing conection
-socket.onopen = function()
-{
+
     var Settings =
     {
         Simultanious : simultan, Timer : timer, Blind : blind
     };
     
-    socket.send("OPTIONS " + JSON.stringify(Settings));
+    return Settings;
 }
 //Test end-----------------------------------------------------------------------------
 //
-
-(function splitURL(){
-    
-})()
