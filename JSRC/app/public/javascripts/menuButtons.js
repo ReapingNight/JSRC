@@ -78,6 +78,22 @@ function uncheckBlind()
 {
     blindActive = false;
 }
+function play()
+{
+    blind = blindActive;
+    simultan = simulList.value;
+    timer = timerList.value;
+    if(simulActive == false)
+    {
+        simultan = 1
+    }
+    if(timerActive == false)
+    {
+        timer = 1
+    }
+    
+    window.location.href = "game?Simul=" + simultan + "&Timer=" + timer + "&Blind=" + blind;
+}
 //Test Code!---------------------------------------------------------------------------
 function michael()
 {
