@@ -1,13 +1,9 @@
 
+window.onload = function(){
 
-(function gameHandler(){
-
-    window.onload = function()
-    {
-        socket.send("OPTIONS " + JSON.stringify(CreateMatch()));
-    }
-
-
+   
+    socket.send("OPTIONS " + JSON.stringify(CreateMatch()));
+    
     socket.onmessage = function(message)
     {
         
@@ -26,4 +22,4 @@
             setYourTurn(Boolean(parseInt(words[1])));
         }
     }
-})()
+}
