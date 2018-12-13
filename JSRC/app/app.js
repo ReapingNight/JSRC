@@ -12,15 +12,14 @@ app.use(express.static(__dirname + "/public"));
 var server = http.createServer(app);
 
 var numGames = 0;
-
-var board = require("chess-board");
+var boardModule = require("chess-board");
 
 app.get("/game", indexRouter);
 app.get("/", indexRouter);
 
 //Route for sending starting json with all the pieces in place
 app.get("/start", function(req, res){
-        res.json(board.board);
+        res.json(boardModule().board);
 });
 
 //Catch any stray url paths
@@ -28,7 +27,7 @@ app.get("*", indexRouter);
 
 
 const wss = new websocket.Server({server});
-var players = [];
+var playerQueue = [];
 var games = [];
 
 //What to do on connection
@@ -37,7 +36,7 @@ wss.on("connection", function(ws) {
         ws.onclose = function(event)
         {
                 console.log("Connection closed with a player")
-                players.splice(players.indexOf(event), 1);
+                playerQueue.splice(playerQueue.indexOf(event), 1);
         };
         ws.send("ALERT Connected");
         console.log("connected");
@@ -49,12 +48,15 @@ wss.on("connection", function(ws) {
                         case "MOVE":
                                 let positions = words[1].split(",");
                                 let thisGame = findGame(ws);
-                                let temp = thisGame.board.move(positions[0], positions[1]);
+                                let temp = thisGame.move(thisGame.board, positions[0], positions[1]);
+
+                                //console.log(thisGame.move.toString());
 
                                 if(temp !== null)
                                 {
-                                        thisGame.players[0].send("MAKE_MOVE " + JSON.stringify(temp));
-                                        thisGame.players[1].send("MAKE_MOVE " + JSON.stringify(temp));
+                                        console.log("Confirm move: " + positions[0] + ":" + positions[1])
+                                        thisGame.playerQueue[0].send("MAKE_MOVE " + JSON.stringify(temp));
+                                        thisGame.playerQueue[1].send("MAKE_MOVE " + JSON.stringify(temp));
                                 }
                                 else
                                 {
@@ -64,15 +66,14 @@ wss.on("connection", function(ws) {
                         case "OPTIONS":
                                 settings = JSON.parse(words[1]);
                                 var player = {id:ws, options:settings};
-                                players.push(player);
-                                console.log(players.length);
-                                for(var i=0; i<players.length ; i++)
+                                playerQueue.push(player);
+                                console.log(playerQueue.length);
+                                for(var i=0; i<playerQueue.length ; i++)
                                 {
-                                        if((settingEquals(players[i].options, player.options) == true) && ((players[i].id == player.id) == false))
+                                        if((settingEquals(playerQueue[i].options, player.options) == true) && ((playerQueue[i].id == player.id) == false))
                                         {
                                                 console.log("Found!");
-                                                startGame(players[i], player, player.options);
-
+                                                startGame(playerQueue[i], player, player.options);
                                         }
                                 }
                                break; 
@@ -85,14 +86,13 @@ wss.on("connection", function(ws) {
 
 function startGame(playerOne, playerTwo, options)
 {     
-        console.log(JSON.stringify(board));
-        let temp = require("chess-game").newGame(numGames++, [playerOne.id, playerTwo.id], JSON.parse(JSON.stringify(board)), options, 0);
-        temp.board.move = board.move;
+        //console.log(JSON.stringify(board));
+        let temp = require("chess-game").newGame(numGames++, [playerOne.id, playerTwo.id], boardModule().board, options, 0);
+        temp.move = boardModule().move;
         games.push(temp);
 
-        
-        players.splice(players.indexOf(playerOne), 1);
-        players.splice(players.indexOf(playerTwo), 1);
+        playerQueue.splice(getFirstIndex(playerQueue, playerOne), 1);
+        playerQueue.splice(getFirstIndex(playerQueue, playerTwo), 1);
         console.log("Starting game: " + temp.id);
         temp.players[0].send("GENERATE 0");
         temp.players[1].send("GENERATE 1");
@@ -119,6 +119,19 @@ function findGame(value)
                         return games[ii];
                 }
         }
+}
+
+function getFirstIndex(array, value)
+{
+        for(let ii = 0; ii < array.length; ii++)
+        {
+                if(array[ii] === value)
+                {
+                        return ii;
+                }
+        }
+
+        return -1;
 }
 
 server.listen(port);

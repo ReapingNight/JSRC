@@ -2,14 +2,6 @@
 <html>
     <head>
         <title>JSRC Game</title>
-        <script src="javascripts/config.js" type="text/javascript"></script>  
-        <script src="javascripts/createMatch.js" type="text/javascript"></script>
-          
-        <script src="javascripts/socketHandler.js" type="text/javascript"></script>   
-        <script language="javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  
-        <script src="javascripts/boardGenerator.js" type="text/javascript"></script>        
-        <script src="javascripts/movePiece.js" type="text/javascript"></script>
         
         <link rel="stylesheet" type="text/css" href="stylesheets/game.css" />
         <link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
@@ -26,10 +18,6 @@
                 <div id="lostPieces">Lost Pieces</div>
                 <div id="capturePieces">Captured Pieces</div>
             </div>
-
-            <button onclick="generateBoard(0)">Generate Black</button>
-            <button onclick="generateBoard(1)">Generate White</button>
-
             <div id="chessBorder">
                 <div id="board">
                     <!--The chess board will be generated here-->
@@ -52,6 +40,15 @@
                 <p>Placeholder text</p>
             </div>
         </footer>
+
+        <script src="javascripts/config.js" type="text/javascript"></script>  
+        <script src="javascripts/createMatch.js" type="text/javascript"></script>
+          
+        <script src="javascripts/socketHandler.js" type="text/javascript"></script>   
+        <script language="javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  
+        <script src="javascripts/boardGenerator.js" type="text/javascript"></script>        
+        <script src="javascripts/movePiece.js" type="text/javascript"></script>
     </body>
 
 
