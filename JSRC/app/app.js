@@ -12,7 +12,6 @@ app.use(express.static(__dirname + "/public"));
 var server = http.createServer(app);
 
 var numGames = 0;
-
 var boardModule = require("chess-board");
 
 app.get("/game", indexRouter);
@@ -20,7 +19,7 @@ app.get("/", indexRouter);
 
 //Route for sending starting json with all the pieces in place
 app.get("/start", function(req, res){
-        res.json(boardModule.newBoard);
+        res.json(boardModule().board);
 });
 
 //Catch any stray url paths
@@ -44,10 +43,13 @@ wss.on("connection", function(ws) {
                         case "MOVE":
                                 let positions = words[1].split(",");
                                 let thisGame = findGame(ws);
-                                let temp = thisGame.board.move(positions[0], positions[1]);
+                                let temp = thisGame.move(thisGame.board, positions[0], positions[1]);
+
+                                //console.log(thisGame.move.toString());
 
                                 if(temp !== null)
                                 {
+                                        console.log("Confirm move: " + positions[0] + ":" + positions[1])
                                         thisGame.players[0].send("MAKE_MOVE " + JSON.stringify(temp));
                                         thisGame.players[1].send("MAKE_MOVE " + JSON.stringify(temp));
                                 }
@@ -80,8 +82,8 @@ wss.on("connection", function(ws) {
 function startGame(playerOne, playerTwo, options)
 {     
         //console.log(JSON.stringify(board));
-        let temp = require("chess-game").newGame(numGames++, [playerOne.id, playerTwo.id], boardModule.newBoard, options, 0);
-        temp.board.move = boardModule.move;
+        let temp = require("chess-game").newGame(numGames++, [playerOne.id, playerTwo.id], boardModule().board, options, 0);
+        temp.move = boardModule().move;
         games.push(temp);
 
         playerQueue.splice(getFirstIndex(playerQueue, playerOne), 1);
