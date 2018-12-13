@@ -33,7 +33,12 @@ var games = [];
 
 //What to do on connection
 wss.on("connection", function(ws) {
-        
+
+        ws.onclose = function(event)
+        {
+                console.log("Connection closed with a player")
+                players.splice(players.indexOf(event), 1);
+        };
         ws.send("ALERT Connected");
         console.log("connected");
         ws.on("message", function(data){
@@ -67,6 +72,7 @@ wss.on("connection", function(ws) {
                                         {
                                                 console.log("Found!");
                                                 startGame(players[i], player, player.options);
+
                                         }
                                 }
                                break; 
@@ -84,12 +90,15 @@ function startGame(playerOne, playerTwo, options)
         temp.board.move = board.move;
         games.push(temp);
 
-        players.splice(playerOne);
-        players.splice(playerTwo);
+        
+        players.splice(players.indexOf(playerOne), 1);
+        players.splice(players.indexOf(playerTwo), 1);
         console.log("Starting game: " + temp.id);
         temp.players[0].send("GENERATE 0");
         temp.players[1].send("GENERATE 1");
 }
+
+
 
 function settingEquals(settingsOne, settingsTwo)
 {
