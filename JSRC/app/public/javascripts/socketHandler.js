@@ -9,7 +9,7 @@ window.onload = function(){
         
         let words = message.data.split(" ");
         if(words[0] === "MAKE_MOVE")
-        {
+        { 
             mover(words[1]);
         }
         if(words[0] === "ALERT")

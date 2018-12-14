@@ -49,7 +49,7 @@ wss.on("connection", function(ws) {
                                 let positions = words[1].split(",");
                                 let thisGame = findGame(ws);
                                 let temp = thisGame.move(thisGame.board, positions[0], positions[1]);
-
+                                console.log("moved")
                                 //console.log(thisGame.move.toString());
 
                                 if(temp !== null)
