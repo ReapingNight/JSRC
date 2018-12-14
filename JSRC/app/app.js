@@ -54,9 +54,15 @@ wss.on("connection", function(ws) {
                                 {
                                         for(const ii in temp)
                                         {
+                                                //console.log(temp[ii]);
+
                                                 thisGame.players[0].send("MAKE_MOVE " + JSON.stringify(temp[ii]));
                                                 thisGame.players[1].send("MAKE_MOVE " + JSON.stringify(temp[ii]));
                                         }
+                                        //console.log(thisGame.board);
+
+                                        thisGame.players[0].send("TURN");
+                                        thisGame.players[1].send("TURN");
                                 }
                                 else
                                 {

@@ -1,5 +1,4 @@
-
-window.onload = function(){
+function getMessage(){
     socket.onmessage = function(message)
     {
         
@@ -18,10 +17,15 @@ window.onload = function(){
             setYourTurn(Boolean(parseInt(words[1])));
             clockHandler();
         }
+        if(words[0] === "TURN")
+        {
+            setYourTurn();
+        }
     }
 }
 
 function createSocket()
 {
     socket.send("OPTIONS " + JSON.stringify(CreateMatch()));
+    getMessage();
 }

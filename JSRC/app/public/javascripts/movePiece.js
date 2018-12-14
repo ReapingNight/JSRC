@@ -72,14 +72,20 @@ function mover(obj)
 
     $('#' + piece.posOld).css('background-image', 'none');
     $('#' + piece.position).css('background-image', 'url(images/pieces/' + piece.color + piece.type + '.png)');
-
-    yourTurn = !yourTurn;
-    updateTurnSign();
 }
 
-function setYourTurn(val)
+function setYourTurn()
 {
-    yourTurn = val;
+    if(arguments[0] !== undefined)
+    {
+        yourTurn = arguments[0];
+    }
+    else
+    {
+        yourTurn = !yourTurn;
+    }
+
+    updateTurnSign();
 }
 
 function updateTurnSign()
