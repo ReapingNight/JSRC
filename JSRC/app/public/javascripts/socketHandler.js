@@ -1,9 +1,5 @@
 
 window.onload = function(){
-
-   
-    socket.send("OPTIONS " + JSON.stringify(CreateMatch()));
-    
     socket.onmessage = function(message)
     {
         
@@ -23,4 +19,9 @@ window.onload = function(){
             clockHandler();
         }
     }
+}
+
+function createSocket()
+{
+    socket.send("OPTIONS " + JSON.stringify(CreateMatch()));
 }

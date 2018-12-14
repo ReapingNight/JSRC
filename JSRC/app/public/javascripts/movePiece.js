@@ -41,7 +41,6 @@ function select(id)
  */
 function highlightTile(type)
 {
-    //window.alert(type + " " + arguments[1] + "," + arguments[2] + ":" + arguments[3]);
     switch(type)
     {
         case 0:
@@ -70,9 +69,6 @@ function highlightTile(type)
 function mover(obj)
 {
     let piece = JSON.parse(obj);
-
-    let oldPosStr = '#' + piece.posOld;
-    let newPosStr = '#' + piece.position;
 
     $('#' + piece.posOld).css('background-image', 'none');
     $('#' + piece.position).css('background-image', 'url(images/pieces/' + piece.color + piece.type + '.png)');

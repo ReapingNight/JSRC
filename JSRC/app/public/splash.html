@@ -39,39 +39,6 @@
                 <div id="info_options" style="display:none">
                     <!--Section in html corresponding to the options form-->
                     <form>
-                        
-                        <div>
-                            <div id = "simulRadio">
-                                Simultanious:
-                                <input type="radio" name="simultan" onclick="checkSimultan()">Yes</input>
-                                <input type="radio" name="simultan" onclick="uncheckSimultan()" checked>No</input>
-                            </div>
-                            <div id = "simulList">
-                                <select id="simulOption" style="display:none">
-                                    <option value=2>2</option>
-                                    <option value=3>3</option>
-                                    <option value=4>4</option>
-                                    <option value=5>5</option>
-                                </select>
-                            </div>
-                        </div>
-                        <br />
-                        <div>
-                            <div id = "timerRadio">
-                                Timer:
-                                <input type="radio" name="timer" onclick="checkTimer()">Yes</input>
-                                <input type="radio" name="timer" onclick="uncheckTimer()" checked>No</input>
-                            </div>
-                            <div id = "timerList">
-                                <select id="timerOption" style = "display:none">
-                                    <option value="15+10">15+10</option>
-                                    <option value="15+20">15+20</option>
-                                    <option value="25+10">25+10</option>
-                                    <option value="25+20">25+20</option>
-                                </select>
-                            </div>
-                        </div>
-                        <br />
                         Blind: 
                             <input type="radio" name="blind" onclick="checkBlind()">Yes</input>
                             <input type="radio" name="blind" onclick="uncheckBlind()" checked>No</input>
@@ -142,7 +109,6 @@
             </div>
         </footer>
 
-        <script src="javascripts/config.js"></script> 
         <script src = "javascripts/menuButtons.js"></script>
     </body>
 </html>
