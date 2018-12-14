@@ -56,6 +56,9 @@ function highlightTile(type)
             arguments[1].style.border = "none";
             arguments[2].style.border = "none";
             break;
+        case 3:
+            arguments[1].style.border = "0.25vw groove " + arguments[3];
+            arguments[2].style.border = "0.25vw groove " + arguments[3];
         default:
             break;
     }
@@ -66,6 +69,7 @@ function highlightTile(type)
 function mover(obj)
 {
     let piece = JSON.parse(obj);
+
     $('#' + piece.posOld).css('background-image', 'none');
     $('#' + piece.position).css('background-image', 'url(images/pieces/' + piece.color + piece.type + '.png)');
 

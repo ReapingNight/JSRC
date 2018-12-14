@@ -1,9 +1,5 @@
 
 window.onload = function(){
-
-   
-    socket.send("OPTIONS " + JSON.stringify(CreateMatch()));
-    
     socket.onmessage = function(message)
     {
         
@@ -20,6 +16,12 @@ window.onload = function(){
         {
             generateBoard(parseInt(words[1]));
             setYourTurn(Boolean(parseInt(words[1])));
+            clockHandler();
         }
     }
+}
+
+function createSocket()
+{
+    socket.send("OPTIONS " + JSON.stringify(CreateMatch()));
 }

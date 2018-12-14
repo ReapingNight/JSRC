@@ -38,7 +38,7 @@ wss.on("connection", function(ws) {
                 console.log("Connection closed with a player")
                 playerQueue.splice(playerQueue.indexOf(event), 1);
         };
-        ws.send("ALERT Connected");
+        //ws.send("ALERT Connected");
         console.log("connected");
         ws.on("message", function(data){
                 console.log(data.toString());
@@ -48,15 +48,13 @@ wss.on("connection", function(ws) {
                         case "MOVE":
                                 let positions = words[1].split(",");
                                 let thisGame = findGame(ws);
-                                let temp = thisGame.move(thisGame.board, positions[0], positions[1]);
-                                console.log("moved")
-                                //console.log(thisGame.move.toString());
+                                let temp = thisGame.move(positions[0], positions[1]);
 
                                 if(temp !== null)
                                 {
-                                        console.log("Confirm move: " + positions[0] + ":" + positions[1])
-                                        thisGame.playerQueue[0].send("MAKE_MOVE " + JSON.stringify(temp));
-                                        thisGame.playerQueue[1].send("MAKE_MOVE " + JSON.stringify(temp));
+                                        //console.log("Confirm move: " + positions[0] + ":" + positions[1])
+                                        thisGame.players[0].send("MAKE_MOVE " + JSON.stringify(temp));
+                                        thisGame.players[1].send("MAKE_MOVE " + JSON.stringify(temp));
                                 }
                                 else
                                 {
@@ -88,7 +86,7 @@ function startGame(playerOne, playerTwo, options)
 {     
         //console.log(JSON.stringify(board));
         let temp = require("chess-game").newGame(numGames++, [playerOne.id, playerTwo.id], boardModule().board, options, 0);
-        temp.move = boardModule().move;
+        temp.move = boardModule().move(temp.board);
         games.push(temp);
 
         playerQueue.splice(getFirstIndex(playerQueue, playerOne), 1);
