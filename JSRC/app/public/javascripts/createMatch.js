@@ -8,6 +8,9 @@ var BlindString = Params[0];
 var blind = BlindString.split("=")[1];
 
 let board = document.getElementById("board");
+let lable = document.getElementById("turnText");
+
+lable.innerHTML = "QUEUEING";
 board.innerHTML = "<img src=\"images/loading-icon.gif\" alt=\"Loading...\" />";
 
 //Test Code!---------------------------------------------------------------------------

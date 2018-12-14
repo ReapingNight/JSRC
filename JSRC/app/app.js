@@ -52,9 +52,11 @@ wss.on("connection", function(ws) {
 
                                 if(temp !== null)
                                 {
-                                        //console.log("Confirm move: " + positions[0] + ":" + positions[1])
-                                        thisGame.players[0].send("MAKE_MOVE " + JSON.stringify(temp));
-                                        thisGame.players[1].send("MAKE_MOVE " + JSON.stringify(temp));
+                                        for(const ii in temp)
+                                        {
+                                                thisGame.players[0].send("MAKE_MOVE " + JSON.stringify(temp[ii]));
+                                                thisGame.players[1].send("MAKE_MOVE " + JSON.stringify(temp[ii]));
+                                        }
                                 }
                                 else
                                 {
