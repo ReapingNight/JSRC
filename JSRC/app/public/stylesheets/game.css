@@ -67,6 +67,13 @@ button:nth-of-type(2n+1)
     margin: auto;
 }
 
+#board img
+{
+    height: 15vw;
+    width: 15wv;
+    padding: 9vw 0vw 0vw 9vw;
+}
+
 .boardTile
 {
     background-repeat: no-repeat;
