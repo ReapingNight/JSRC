@@ -20,6 +20,7 @@ window.onload = function(){
         {
             generateBoard(parseInt(words[1]));
             setYourTurn(Boolean(parseInt(words[1])));
+            clockHandler();
         }
     }
 }

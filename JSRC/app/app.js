@@ -38,7 +38,7 @@ wss.on("connection", function(ws) {
                 console.log("Connection closed with a player")
                 playerQueue.splice(playerQueue.indexOf(event), 1);
         };
-        ws.send("ALERT Connected");
+        //ws.send("ALERT Connected");
         console.log("connected");
         ws.on("message", function(data){
                 console.log(data.toString());

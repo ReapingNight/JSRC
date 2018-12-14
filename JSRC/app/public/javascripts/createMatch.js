@@ -1,7 +1,7 @@
 //Send Options
 function CreateMatch()
 {
-window.alert("CREATE!");
+//window.alert("CREATE!");
 var URLString = ""+window.location;
 var query = URLString.split("?");
 var Params = query[1].split("&");
