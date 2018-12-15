@@ -38,6 +38,7 @@ function select(id)
  * type:    0 - tile, color
  *          1 - tile
  *          2 - tile, tile
+ *          3 - tile, tile, color
  */
 function highlightTile(type)
 {
@@ -57,6 +58,7 @@ function highlightTile(type)
             arguments[2].style.border = "none";
             break;
         case 3:
+            //Select two tiles
             arguments[1].style.border = "0.25vw groove " + arguments[3];
             arguments[2].style.border = "0.25vw groove " + arguments[3];
         default:
@@ -71,7 +73,10 @@ function mover(obj)
     let piece = JSON.parse(obj);
 
     $('#' + piece.posOld).css('background-image', 'none');
-    $('#' + piece.position).css('background-image', 'url(images/pieces/' + piece.color + piece.type + '.png)');
+
+    (piece.position < 0 || piece.position > 63) ?
+        $('#' + piece.position).append("<img src=images/pieces/" + piece.color + piece.type + ".png alt='piece' />") :
+        $('#' + piece.position).css('background-image', 'url(images/pieces/' + piece.color + piece.type + '.png)');
 }
 
 function setYourTurn()
