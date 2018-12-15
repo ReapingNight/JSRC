@@ -37,6 +37,24 @@ wss.on("connection", function(ws) {
         {
                 console.log("Connection closed with a player")
                 playerQueue.splice(playerQueue.indexOf(event), 1);
+                let thisGame = findGame(ws);
+                {
+                        //End game
+                        if (thisGame.ended !== true)
+                        {
+                                if (ws == thisGame.players[0])
+                                {
+                                        thisGame.players[1].send("END " + 1);
+                                        thisGame.ended = true; 
+                                }
+                                if (ws == thisGame.players[1])
+                                {
+                                        thisGame.players[0].send("END " + 0);
+                                        thisGame.ended = true; 
+                                }
+                        }
+                }
+
         };
         //ws.send("ALERT Connected");
         console.log("connected");
@@ -49,6 +67,10 @@ wss.on("connection", function(ws) {
                                 //Check if there was a piece on the selected tile
                                 let positions = words[1].split(",");
                                 let thisGame = findGame(ws);
+                                if(thisGame.ended == true)
+                                {
+                                        return;
+                                }
                                 let temp = thisGame.move(positions[0], positions[1], getFirstIndex(thisGame.players, ws));
 
                                 if(temp !== null)
