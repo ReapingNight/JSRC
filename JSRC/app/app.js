@@ -84,6 +84,7 @@ wss.on("connection", function(ws) {
                                                         thisGame.status = Math.pow((-1), temp[ii].color);
                                                         thisGame.players[0].send("END " + thisGame.status);
                                                         thisGame.players[1].send("END " + thisGame.status);
+                                                        thisGame.ended = true;
                                                 }
                                                 
                                                 //Move all the pieces
