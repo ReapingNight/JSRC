@@ -17,18 +17,6 @@ main
     width: 100%;
 }
 
-button
-{
-    position: fixed;
-    top: 5vw;
-    left: 20vw;
-}
-
-button:nth-of-type(2n+1)
-{
-    left: 27.5vw;
-}
-
 #graveyard
 {
     font-size: 1vw;

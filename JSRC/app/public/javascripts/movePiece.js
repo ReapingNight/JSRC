@@ -72,6 +72,8 @@ function mover(obj)
 
     $('#' + piece.posOld).css('background-image', 'none');
     $('#' + piece.position).css('background-image', 'url(images/pieces/' + piece.color + piece.type + '.png)');
+
+    updateMoveSign(piece.posOld, piece.position);
 }
 
 function setYourTurn()
@@ -93,4 +95,19 @@ function updateTurnSign()
     let turnTextDiv = document.getElementById("turnText");
 
     turnTextDiv.innerText = (yourTurn) ? "Your Turn" : "Opponent\'s Turn";
+}
+
+function updateMoveSign(from, to)
+{
+    let moveTextDiv = document.getElementById("moveText");
+
+    moveTextDiv.innerText = numToTile(from) + " : " + numToTile(to);
+}
+
+function numToTile(num)
+{
+    row = Math.floor(num/8) + 1;
+    col = String.fromCharCode(num%8 + 65);
+
+    return "" + col + row;
 }
