@@ -33,6 +33,13 @@ main
     border-width: 2px;
     height: 50%;
     width: 100%;
+    text-align: center;
+}
+
+#graveyard div img
+{
+    height: 5vw;
+    width: 3vw;
 }
 
 #chessBorder

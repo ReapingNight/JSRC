@@ -13,13 +13,17 @@ function getMessage(){
         }
         if(words[0] === "GENERATE")
         {
-            generateBoard(parseInt(words[1]));
+            let sub = words[1].split("_");
+            generateBoard(parseInt(sub[0]), (sub[1] == "true"));
             setYourTurn(Boolean(parseInt(words[1])));
-            clockHandler();
         }
         if(words[0] === "TURN")
         {
             setYourTurn();
+        }
+        if(words[0] === "END")
+        {
+            window.alert((parseInt(words[1]) > 0)? "White wins" : "Black wins");
         }
     }
 }

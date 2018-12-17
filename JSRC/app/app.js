@@ -37,6 +37,24 @@ wss.on("connection", function(ws) {
         {
                 console.log("Connection closed with a player")
                 playerQueue.splice(playerQueue.indexOf(event), 1);
+                let thisGame = findGame(ws);
+                {
+                        //End game
+                        if (thisGame.ended !== true)
+                        {
+                                if (ws == thisGame.players[0])
+                                {
+                                        thisGame.players[1].send("END " + 1);
+                                        thisGame.ended = true; 
+                                }
+                                if (ws == thisGame.players[1])
+                                {
+                                        thisGame.players[0].send("END " + 0);
+                                        thisGame.ended = true; 
+                                }
+                        }
+                }
+
         };
         //ws.send("ALERT Connected");
         console.log("connected");
@@ -46,21 +64,34 @@ wss.on("connection", function(ws) {
                 switch(words[0])
                 {
                         case "MOVE":
+                                //Check if there was a piece on the selected tile
                                 let positions = words[1].split(",");
                                 let thisGame = findGame(ws);
-                                let temp = thisGame.move(positions[0], positions[1]);
+                                if(thisGame.ended == true)
+                                {
+                                        return;
+                                }
+                                let temp = thisGame.move(positions[0], positions[1], getFirstIndex(thisGame.players, ws));
 
                                 if(temp !== null)
                                 {
                                         for(const ii in temp)
                                         {
-                                                //console.log(temp[ii]);
-
+                                                //Check if king was captured
+                                                if(temp[ii].type === 5 && (temp[ii].position < 0 || temp[ii].position > 63))
+                                                {
+                                                        //End game
+                                                        thisGame.status = Math.pow((-1), temp[ii].color);
+                                                        thisGame.players[0].send("END " + thisGame.status);
+                                                        thisGame.players[1].send("END " + thisGame.status);
+                                                        thisGame.ended = true;
+                                                }
+                                                
+                                                //Move all the pieces
                                                 thisGame.players[0].send("MAKE_MOVE " + JSON.stringify(temp[ii]));
                                                 thisGame.players[1].send("MAKE_MOVE " + JSON.stringify(temp[ii]));
                                         }
-                                        //console.log(thisGame.board);
-
+                                        //Change turns
                                         thisGame.players[0].send("TURN");
                                         thisGame.players[1].send("TURN");
                                 }
@@ -70,13 +101,17 @@ wss.on("connection", function(ws) {
                                 }
                                 break;
                         case "OPTIONS":
+                                //Retrieve settings from message
                                 settings = JSON.parse(words[1]);
                                 var player = {id:ws, options:settings};
                                 playerQueue.push(player);
                                 console.log(playerQueue.length);
+
+                                //Check all players in queue for match
                                 for(var i=0; i<playerQueue.length ; i++)
                                 {
-                                        if((settingEquals(playerQueue[i].options, player.options) == true) && ((playerQueue[i].id == player.id) == false))
+                                        //If match, start game with those players
+                                        if((settingEquals(playerQueue[i].options, player.options) === true) && ((playerQueue[i].id === player.id) === false))
                                         {
                                                 console.log("Found!");
                                                 startGame(playerQueue[i], player, player.options);
@@ -92,23 +127,22 @@ wss.on("connection", function(ws) {
 
 function startGame(playerOne, playerTwo, options)
 {     
-        //console.log(JSON.stringify(board));
+        //Generate new game with players
         let temp = require("chess-game").newGame(numGames++, [playerOne.id, playerTwo.id], boardModule().board, options, 0);
         temp.move = boardModule().move(temp.board);
         games.push(temp);
 
         playerQueue.splice(getFirstIndex(playerQueue, playerOne), 1);
         playerQueue.splice(getFirstIndex(playerQueue, playerTwo), 1);
-        console.log("Starting game: " + temp.id);
-        temp.players[0].send("GENERATE 0");
-        temp.players[1].send("GENERATE 1");
+        console.log("Starting game: " + temp.id + ", Blind:" + options.blind);
+        temp.players[0].send("GENERATE 0_" + options.blind);
+        temp.players[1].send("GENERATE 1_" + options.blind);
 }
 
-
-
+//Checks if settings are equal
 function settingEquals(settingsOne, settingsTwo)
 {
-        if((settingsOne.Simultanious == settingsTwo.Simultanious) && (settingsOne.Timer == settingsTwo.Timer) && (settingsOne.Blind == settingsTwo.Blind)) 
+        if(settingsOne.blind == settingsTwo.blind)
         {
         return true;
         }
@@ -127,6 +161,7 @@ function findGame(value)
         }
 }
 
+//Returns first index of value in array
 function getFirstIndex(array, value)
 {
         for(let ii = 0; ii < array.length; ii++)
