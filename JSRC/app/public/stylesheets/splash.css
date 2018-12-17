@@ -55,21 +55,6 @@ main
     text-indent: -2vw;
 }
 
-#menu ul li button
-{
-    display: inline-block;
-    width: 100%;
-    font-size: 0.9vw;
-    
-    box-shadow: inset 0vw 3vw 0vw -1.5vw #b54b3a;
-    background-color: #a73f2d;
-    color:#fff;
-	font-weight:bold;
-	padding: 0.5vw 1vw;
-	text-decoration:none;
-	text-shadow:0vw 0.1vw 0vw #7a2a1d;
-}
-
 #info
 {
     float: left;

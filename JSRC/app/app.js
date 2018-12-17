@@ -40,17 +40,17 @@ wss.on("connection", function(ws) {
                 let thisGame = findGame(ws);
                 {
                         //End game
-                        if (thisGame.ended !== true)
+                        if (thisGame && (thisGame.status === 0))
                         {
                                 if (ws == thisGame.players[0])
                                 {
-                                        thisGame.players[1].send("END " + 1);
-                                        thisGame.ended = true; 
+                                        thisGame.status = 1;
+                                        thisGame.players[1].send("END " + thisGame.status);
                                 }
                                 if (ws == thisGame.players[1])
                                 {
-                                        thisGame.players[0].send("END " + 0);
-                                        thisGame.ended = true; 
+                                        thisGame.status = -1;
+                                        thisGame.players[0].send("END " + thisGame.status);
                                 }
                         }
                 }
@@ -67,7 +67,7 @@ wss.on("connection", function(ws) {
                                 //Check if there was a piece on the selected tile
                                 let positions = words[1].split(",");
                                 let thisGame = findGame(ws);
-                                if(thisGame.ended == true)
+                                if(thisGame.status !== 0)
                                 {
                                         return;
                                 }
@@ -84,7 +84,6 @@ wss.on("connection", function(ws) {
                                                         thisGame.status = Math.pow((-1), temp[ii].color);
                                                         thisGame.players[0].send("END " + thisGame.status);
                                                         thisGame.players[1].send("END " + thisGame.status);
-                                                        thisGame.ended = true;
                                                 }
                                                 
                                                 //Move all the pieces

@@ -24,6 +24,7 @@ function getMessage(){
         if(words[0] === "END")
         {
             window.alert((parseInt(words[1]) > 0)? "White wins" : "Black wins");
+            window.location.replace("../");
         }
     }
 }
